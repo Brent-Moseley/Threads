@@ -1,4 +1,3 @@
-
 #
 # Produce data test file
 #
@@ -6,7 +5,7 @@
 
 command = ARGV[0]
 
-if (command != "en" and command != "de") or ARGV.length != 2
+if (command != "en" and command != "de" and command != "sh") or ARGV.length != 2
 	puts "Invalid use!"
 	puts "Useage:  ruby code.rb [en | de] [file]"
 	exit
@@ -45,6 +44,19 @@ if command == "de"
 	puts "\n  => #{restore}"
 	writeout = restore
 end
+
+if command == "sh"
+	restore = ""
+	test_str.split('/').reverse!.each { |i| restore << i.reverse << ' '}
+	restore.gsub!(/\^/, 'e')
+	restore.gsub!(/@/, 'r')
+	restore.gsub!(/~/, 'a')
+	restore.gsub!(/#/, 's')
+
+	puts "\n  => #{restore}"
+	exit
+end
+
 
 f = File.new(ARGV[1], 'w')
 f.write (writeout)
