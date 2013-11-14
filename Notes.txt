@@ -1,0 +1,1 @@
+brew install -v https://raw.github.com/cliffrowley/homebrew/patched_qt/Library/Formula/qt.rb --HEAD --without-ssse3
